@@ -13,7 +13,6 @@ let resetX;
 let resetY;
 let slideAmount = .5;
 let slideIter = .01;
-
 //page is clicked on
 saves();
 console.log(localStorage.getItem('hasSpace'));
@@ -34,7 +33,7 @@ console.log(localStorage.getItem('hasSpace'));
     window.location.href = page;
   }
   function saves(){
-    if(localStorage.getItem('hasSpace') === true){
+    if(localStorage.getItem('hasSpace') === 'true'){
       console.log(localStorage.getItem('hasSpace'));
       goTo('/space/space.html');
     }else{

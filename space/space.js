@@ -12,7 +12,7 @@ let fillColor = [0,0,0,0]
 const circNumb = 500;
 let x = 0;
 let fillRGB = [0,0,0];
-let dLogCurrent = 0;
+let dLogCurrent = 1;
 //dialogue
 const dLog = ["hello, do you know where you are?","it is not often you stumble upon a one dimensional point",
                 "i have a feelin you don't do things the normal way","anyway, welcome, you'll find out dimensions have a way of...changing...",
@@ -76,7 +76,6 @@ function dLogger(){
             //set new event
             saves('tutorial','true');
             remove();
-            dete.style.display = "none";
             areaOne();
 
         }
@@ -138,7 +137,9 @@ function draw(){
                 x++; 
             }
             if(x === circX.length/2){
-                document.getElementById('interface').style.height = "300px"; 
+                const dete = document.getElementById("d-et-e").innerText = dLog[0];
+                //document.getElementById('interface').style.height = "300px"; 
+
             }
             if(x>=circX.length-1 && getSave('startingEvent')==='false'){
                 saves('startingEvent','true');

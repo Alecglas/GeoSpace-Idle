@@ -14,7 +14,9 @@ let resetY;
 let slideAmount = .5;
 let slideIter = .01;
 
-
+//page is clicked on
+saves();
+console.log(localStorage.getItem('hasSpace'));
     document.addEventListener("DOMContentLoaded", function(){
         width = window.innerWidth;
         height = window.innerHeight;
@@ -28,12 +30,23 @@ let slideIter = .01;
         createSlider();
     });
   function goTo(page){
+    localStorage.setItem('hasSpace', 'true');
     window.location.href = page;
   }
+  function saves(){
+    if(localStorage.getItem('hasSpace') === true){
+      console.log(localStorage.getItem('hasSpace'));
+      goTo('/space/space.html');
+    }else{
+      localStorage.setItem('hasSpace', 'false');
+      localStorage.setItem('startingEvent', 'false');
+      localStorage.setItem('tutorial', 'false');
+      localStorage.setItem('act1', '0');
+      localStorage.setItem('freeplay', 'false');
+    }
+  }
   function setup() {
-    console.log("works");
     createCanvas(width, height);
-     
   }
   function draw() {
     //background(102);
@@ -41,8 +54,10 @@ let slideIter = .01;
       background(255);
       circle(width/2,height/2,radius);
       fill(255);
-      radius+=30;
+      radius+=45;
       if(radius>width+300){
+        let audio = new Audio('/assets/Bluebird.mp3');
+        audio.play();
         goTo("space/space.html");
       }
     } else {
@@ -71,28 +86,11 @@ let slideIter = .01;
       fill("black");
     }
     slideAmount = .1;
-
     currentSlide = random(circleNumb);
-    // if(currentSlide>150){
-    //   sliderY[currentSlide] += Math.floor(random(-325,0));
-    //   sliderX[currentSlide] += Math.floor(random(-325,0));
-    //   resetX = width;
-    //   resetY = height;
-    // }else{
-    //   sliderY[currentSlide] += Math.floor(random(0,325));
-    //   sliderX[currentSlide] += Math.floor(random(0,325));
-    //   resetX = 0;
-    //   resetY = 0;
-    // }
-    // if((sliderY[currentSlide] && sliderX[currentSlide]) > 2000 || (sliderY[currentSlide] && sliderX[currentSlide]) <0){
-    //   sliderY[currentSlide] = 0;
-    //   sliderX[currentSlide] = 0;
-    // }
     stroke(50);
   }
 
   function createSlider(){
-    console.log("works");
     for (let xx = 0; xx < circleAmount; xx++) {
       sliderX.push(x1);
       sliderY.push(y1);
@@ -100,7 +98,6 @@ let slideIter = .01;
       if(xx==circleAmount/2 ){
         x1 = width/2;
         y1 = 0;
-        console.log("fart");
       }
        x1+=10;
        y1+=10;

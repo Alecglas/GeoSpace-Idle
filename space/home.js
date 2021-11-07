@@ -77,7 +77,9 @@ function createSpheres(n,s){
     }
   }
 }
-
+function goTo(page){
+  window.location.href = page;
+}
 function selectPoly(sides) {
   if(core == null){
     core = new NodePolygon(editor[0].x + editor[0].size/2 - SIZE/2, height*.5 + SIZE/2, sides, SIZE);

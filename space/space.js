@@ -47,8 +47,8 @@ function checkSave(){
             }else{}
         }else{}
     }else{
-        // let audio = new Audio('/assets/Bluebird.mp3');
-        // audio.play();
+        let audio = new Audio('/assets/Bluebird.mp3');
+        audio.play();
     }
 }
 //clicker for dialogue starts the tutorial 
@@ -77,6 +77,7 @@ function dLogger(){
             saves('tutorial','true');
             remove();
             areaOne();
+            goTo('home.html');
 
         }
         if(dLogCurrent ===9){
